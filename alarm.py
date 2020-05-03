@@ -19,10 +19,8 @@
 import anki_vector
 import time
 import sys
-from math import ceil
 from anki_vector.util import degrees
 from anki_vector.events import Events
-from decimal import Decimal, ROUND_DOWN, ROUND_UP
 from PIL import Image, ImageDraw, ImageFont
 from datetime import datetime, date
 
@@ -44,7 +42,6 @@ except IOError:
 import datetime
 print(datetime.datetime.today().strftime("%H:%M"))
 today = date.today()
-#print(today.weekday())
 if (today.weekday() == 0):
     print("Monday")
 if (today.weekday() == 1):
@@ -84,7 +81,7 @@ while True:
                 face_image = make_text_image(text_to_draw, 20, 5, font_file)
                 args = anki_vector.util.parse_command_args()
 
-                print("Display image on Vector's face...")
+                print("Display time on Vector's face...")
                 screen_data = anki_vector.screen.convert_image_to_screen_data(face_image)
                 robot.screen.set_screen_with_image_data(screen_data, 10.0, interrupt_running=True)
 
