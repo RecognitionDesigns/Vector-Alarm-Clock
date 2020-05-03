@@ -1,5 +1,21 @@
 #!/usr/bin/env python3
 
+# Copyright (c) 2020 Recognition Designs Ltd, Colin Twigg
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     https://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+# for use with DDL/Anki's Vector Robot: https://www.anki.com/en-us/vector
+
 import anki_vector
 import time
 import sys
@@ -18,7 +34,7 @@ def make_text_image(text_to_draw, x, y, font=None):
     return text_image
 
 try:
-    font_file = ImageFont.truetype("Fonts/lcd.ttf", 75)
+    font_file = ImageFont.truetype("lcd.ttf", 75)
 except IOError:
     try:
         font_file = ImageFont.truetype("arial.ttf", 27)
@@ -52,12 +68,12 @@ while True:
     if hour == int(datetime.datetime.today().strftime("%H")) and minute == int(datetime.datetime.today().strftime("%M")):
         print("Alarm Raised")
         
-        with anki_vector.AsyncRobot('0050169f') as robot:
+        with anki_vector.AsyncRobot() as robot:
             for x in range(0, 10):
                 datetime.datetime.now().strftime(('%H:%M'))
             
                 robot.anim.play_animation_trigger('GreetAfterLongTime')
-                robot.audio.stream_wav_file("Sounds/vector_alert.wav", 75).result()
+                robot.audio.stream_wav_file("vector_alert.wav", 75).result()
 
                 robot.behavior.set_head_angle(degrees(30.0))
                 robot.behavior.set_lift_height(0.0)
