@@ -56,13 +56,13 @@ if (today.weekday() == 5):
     print("Saturday")
 if (today.weekday() == 6):
     print("Sunday")
-#day=int(input("Enter a Day of the week number, 0=M 1=T 2=W 3=Th 4=F 5=F 6=Sn: "))
+day=int(input("Enter a Day of the week number, 0=M 1=T 2=W 3=Th 4=F 5=F 6=Sn: "))
 hour=int(input("Enter an Hour: "))
 minute=int(input("Enter a Minute: "))
 #hour=int(21)
 #minute=int(46)
 while True:
-    if hour == int(datetime.datetime.today().strftime("%H")) and minute == int(datetime.datetime.today().strftime("%M")):
+    if day == int(today.weekday()) and hour == int(datetime.datetime.today().strftime("%H")) and minute == int(datetime.datetime.today().strftime("%M")):
         print("Alarm Raised")
         
         with anki_vector.AsyncRobot() as robot:
